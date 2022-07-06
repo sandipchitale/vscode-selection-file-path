@@ -1,0 +1,67 @@
+{
+    "name": "vscode-selection-file-path",
+    "displayName": "Provide commands to process selection as file Path.",
+    "icon": "images/icon.png",
+    "description": "VSCode extension to process selection as file path and provides commands to process it.",
+    "version": "1.0.1",
+    "license": "LICENSE.md",
+    "publisher": "sandipchitale",
+    "author": {
+        "name": "Sandip Chitale"
+    },
+    "maintainers": [
+        "Sandip Chitale <sandipchitale@gmail.com>"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sandipchitale/vscode-selection-file-path.git"
+    },
+	"engines": {
+		"vscode": "^1.63.0"
+	},
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:selection-file-path.slashifyBackslashify"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "selection-file-path.slashifyBackslashify",
+                "title": "Cycle slash, backslash in file selection",
+                "when": "editorTextFocus && (!editorReadonly)",
+                "category": "Path"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "selection-file-path.slashifyBackslashify",
+                "key": "Alt+/",
+                "when": "editorTextFocus && (!editorReadonly)"
+            }
+        ]
+    },
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.63.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.2.2",
+		"@types/node": "14.x",
+		"eslint": "^7.27.0",
+		"@typescript-eslint/eslint-plugin": "^4.26.0",
+		"@typescript-eslint/parser": "^4.26.0",
+		"glob": "^7.1.7",
+		"mocha": "^8.4.0",
+		"typescript": "^4.3.2",
+		"vscode-test": "^1.5.2"
+	}
+}
